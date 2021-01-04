@@ -1,0 +1,126 @@
+{
+	"info": {
+		"_postman_id": "338d3e8f-2ace-4ea9-a84c-52a40b017d9e",
+		"name": "Monitor",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ADD http://127.0.0.1:8010/api/monitors/",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "http://127.0.0.1:8010",
+						"type": "text"
+					},
+					{
+						"key": "Acc",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "urls[]",
+							"value": "http://wp.pl",
+							"type": "text"
+						},
+						{
+							"key": "urls[]",
+							"value": "http://onet.pl/",
+							"type": "text"
+						},
+						{
+							"key": "urls[]",
+							"value": "http://onet.pl",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8010/api/monitors/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8010",
+					"path": [
+						"api",
+						"monitors",
+						""
+					],
+					"query": [
+						{
+							"key": "urls",
+							"value": "['asdasd','asdasd',asdasd','asdasda']",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET http://127.0.0.1:8010/api/monitors/http://www.pl",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Referer",
+						"value": "http://127.0.0.1:8010",
+						"type": "text"
+					},
+					{
+						"key": "Acc",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8010/api/monitors/http://wp.pl",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8010",
+					"path": [
+						"api",
+						"monitors",
+						"http:",
+						"",
+						"wp.pl"
+					],
+					"query": [
+						{
+							"key": "urls",
+							"value": "['asdasd','asdasd',asdasd','asdasda']",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

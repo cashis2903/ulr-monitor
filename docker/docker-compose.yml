@@ -1,0 +1,41 @@
+version: '3.6'
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ../:/var/www
+      - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+   
+  webserver:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8010:80"
+      - "4431:443"
+    volumes:
+      - ../:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    command: redis-server --appendonly yes --requirepass "redispasswd"
+    volumes:
+      - redis_data:/data
+    ports:
+      - "63790:6379"
+
+volumes:
+  redis_data:
+    driver: local
